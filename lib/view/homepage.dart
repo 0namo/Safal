@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:safal/view/templates/drawer.dart';
 
 import '../const.dart';
-import 'profilepage.dart';
+import 'profile/profilepage.dart';
 import 'registerPage.dart';
 import 'bottomnavbar/homeview.dart';
 import 'bottomnavbar/coursepage.dart';

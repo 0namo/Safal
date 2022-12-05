@@ -10,7 +10,7 @@ import '../drawer_menu/ebook.dart';
 import '../drawer_menu/help.dart';
 import '../drawer_menu/logout.dart';
 import '../drawer_menu/refer.dart';
-import '../profilepage.dart';
+import '../profile/profilepage.dart';
 
 class DrawerWidget extends StatelessWidget {
   const DrawerWidget({
