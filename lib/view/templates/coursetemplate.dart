@@ -21,7 +21,7 @@ class CourseTemplate extends StatelessWidget {
               color: Colors.grey,
               spreadRadius: 1,
               blurRadius: 2,
-              offset: Offset(5, -1)),
+              offset: Offset(2, 2)),
         ],
         borderRadius: BorderRadius.circular(10),
       ),

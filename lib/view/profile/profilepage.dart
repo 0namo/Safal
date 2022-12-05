@@ -1,27 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:safal/const.dart';
+import 'package:safal/view/auth/loginPage.dart';
 import 'package:safal/view/homepage.dart';
+import 'package:safal/view/templates/appbar_template.dart';
+
+import '../templates/profile_Template.dart';
+import 'editprofilepage.dart';
+import 'referals.dart';
+import 'subscription.dart';
 
 class UserProfilePage extends StatefulWidget {
   const UserProfilePage({Key? key}) : super(key: key);
 
   @override
-  _UserProfilePageState createState() => _UserProfilePageState();
+  State<UserProfilePage> createState() => _UserProfilePageState();
 }
 
 class _UserProfilePageState extends State<UserProfilePage> {
+  bool isSeected = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: primaryColor,
-        centerTitle: true,
-        title: Text(
-          'My Profile',
-          style: TextStyle(),
-        ),
-      ),
+      appBar: AppBarMethod('My Profile'),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -29,8 +30,8 @@ class _UserProfilePageState extends State<UserProfilePage> {
               child: Container(
                 padding: EdgeInsets.symmetric(vertical: 40),
                 decoration: BoxDecoration(
-                  color: Colors.yellow,
-                ),
+                    // color: Colors.yellow,
+                    ),
                 child: Column(
                   children: [
                     Image.asset(
@@ -59,10 +60,6 @@ class _UserProfilePageState extends State<UserProfilePage> {
               margin: EdgeInsets.all(30),
               padding: EdgeInsets.only(top: 10, left: 15, right: 15),
               decoration: BoxDecoration(
-                // border: OutlineInputBorder(
-                //     borderRadius: BorderRadius.circular(10.0),
-                //   ),
-
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(10),
                 boxShadow: [
@@ -89,66 +86,114 @@ class _UserProfilePageState extends State<UserProfilePage> {
                   //         ListTile(
                   //           leading: Icon(Icons.edit),
                   //           title: Text('edit your profile'),
-                  //           trailing: Icon(Icons.keyboard_arrow_right_sharp),
+                  //           trailing: Icon(
+                  //             Icons.toggle_off,
+                  //             size: 35,
+                  //           ),
                   //         ),
                   //       ],
                   //     ),
                   //   ),
                   // ),
-                  Profile_Widget(Icons.edit, 'Edit Profile', HomePage(),
+                  ProfileWidget(Icons.edit, 'Edit Profile', EditProfilePage(),
                       Icons.keyboard_arrow_right_sharp),
                   Divide(),
-                  Profile_Widget(Icons.edit, 'My Subscription', HomePage(),
+                  ProfileWidget(Icons.trending_up, 'My Subscription',
+                      MySubscription(), Icons.keyboard_arrow_right_sharp),
+                  Divide(),
+                  ProfileWidget(Icons.sync_alt, 'Referals', MyReferals(),
                       Icons.keyboard_arrow_right_sharp),
                   Divide(),
-                  Profile_Widget(Icons.import_export, 'Referals', HomePage(),
-                      Icons.keyboard_arrow_right_sharp),
+                  GestureDetector(
+                    onTap: () {
+                      // Get.to(() => HomePage(),
+                      //     transition: Transition.rightToLeft,
+                      //     duration: Duration(milliseconds: 800));
+                    },
+                    child: Wrap(
+                      children: [
+                        ListTile(
+                          horizontalTitleGap: 5,
+                          leading: Icon(
+                            Icons.notification_add,
+                            size: 30,
+                          ),
+                          title: Text('Notifications',
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.w500)),
+                          trailing: Switch(
+                            value: isSeected,
+                            activeColor: Colors.green,
+                            onChanged: (value) {
+                              isSeected = value;
+                              setState(() {
+                                
+                              });
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                   Divide(),
-                  Profile_Widget(Icons.notification_add, 'Notifications',
-                      HomePage(), Icons.keyboard_arrow_right_sharp),
-                  Divide(),
-                  Profile_Widget(Icons.logout, 'Log Out', HomePage(),
-                      Icons.keyboard_arrow_right_sharp),
+                  GestureDetector(
+                    onTap: () {
+                      //   Get.to(() => HomePage(),
+                      //       transition: Transition.rightToLeft,
+                      //       duration: Duration(milliseconds: 800));
+                      Get.defaultDialog(
+                        confirm: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.red),
+                          child: Text(
+                            'Confirm',
+                            // style: TextStyle(color: Colors.green),
+                          ),
+                          onPressed: () {
+                            Get.offAll(() => LoginPage());
+                          },
+                        ),
+                        cancel: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.green),
+                          child: Text(
+                            'Cancel',
+                            // style: TextStyle(color: Colors.red),
+                          ),
+                          onPressed: () {
+                            Get.back();
+                          },
+                        ),
+                        title: 'Do you want to Logout ?',
+                        middleText: '',
+                        confirmTextColor: Colors.amber,
+                        cancelTextColor: Colors.red,
+                      );
+                    },
+                    child: Wrap(
+                      children: [
+                        ListTile(
+                          horizontalTitleGap: 5,
+                          leading: Icon(
+                            Icons.logout,
+                            size: 30,
+                          ),
+                          title: Text('LogOut',
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.w500)),
+                          trailing: Icon(
+                            Icons.keyboard_arrow_right_sharp,
+                            size: 25,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class Profile_Widget extends StatelessWidget {
-  final IconData profile_icon;
-  final String profile_txt;
-  final Widget profile_call;
-  final IconData profile_trailing_icon;
-
-  Profile_Widget(
-    this.profile_icon,
-    this.profile_txt,
-    this.profile_call,
-    this.profile_trailing_icon,
-  );
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        Get.to(() => profile_call,
-            transition: Transition.rightToLeft,
-            duration: Duration(milliseconds: 800));
-      },
-      child: Wrap(
-        children: [
-          ListTile(
-            horizontalTitleGap: 5,
-            leading: Icon(profile_icon),
-            title: Text(profile_txt),
-            trailing: Icon(profile_trailing_icon),
-          ),
-        ],
       ),
     );
   }

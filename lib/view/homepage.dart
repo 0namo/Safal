@@ -5,8 +5,8 @@ import 'package:get/get.dart';
 import 'package:safal/view/templates/drawer.dart';
 
 import '../const.dart';
+import 'auth/registerPage.dart';
 import 'profile/profilepage.dart';
-import 'registerPage.dart';
 import 'bottomnavbar/homeview.dart';
 import 'bottomnavbar/coursepage.dart';
 import 'bottomnavbar/favoritepage.dart';
@@ -40,10 +40,6 @@ class _HomePageState extends State<HomePage> {
           actions: [
             IconButton(
               onPressed: () {
-                // notification code
-                Get.off(() => RegisterPage(),
-                    transition: Transition.rightToLeft,
-                    duration: Duration(milliseconds: 800));
                 print('notification pressed');
               },
               tooltip: 'Notification',
@@ -51,9 +47,7 @@ class _HomePageState extends State<HomePage> {
             ),
             IconButton(
               onPressed: () {
-                Get.to(() => UserProfilePage(),
-                    transition: Transition.rightToLeft,
-                    duration: Duration(milliseconds: 800));
+                Get.to(() => UserProfilePage());
               },
               icon: Image.asset(
                 'images/profile.png',

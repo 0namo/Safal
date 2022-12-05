@@ -25,13 +25,14 @@ class DrawerWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       backgroundColor: primaryColor,
-      child: ListView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Padding(
             padding: EdgeInsets.only(
-              top: 15,
+              top: 0,
               left: 20,
-              right: 30,
+              right: 210,
             ),
             child: Row(
               children: [
@@ -45,11 +46,11 @@ class DrawerWidget extends StatelessWidget {
                   ),
                 ),
                 Spacer(),
-                GestureDetector(
-                  onTap: (() {
+                IconButton(
+                  onPressed: (() {
                     _scaffoldKey.currentState?.closeDrawer();
                   }),
-                  child: Icon(
+                  icon: Icon(
                     Icons.menu,
                     color: Colors.white,
                     size: 25,
@@ -61,69 +62,77 @@ class DrawerWidget extends StatelessWidget {
               ],
             ),
           ),
-          DrawerHeader(
-            child: UserAccountsDrawerHeader(
-              decoration: BoxDecoration(
-                color: primaryColor,
-              ),
-              currentAccountPicture: IconButton(
-                onPressed: (() {
-                  Get.to(() => UserProfilePage(),
-                      transition: Transition.rightToLeft,
-                      duration: Duration(milliseconds: 800));
-                }),
-                icon: Image.asset(
-                  'images/profile.png',
-                  fit: BoxFit.cover,
-                ),
-              ),
-              accountName: Text(
-                'Leo Messi',
-                style: TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              accountEmail: Text(
-                'leo2022messi@gmail.com',
-                style: TextStyle(
-                  fontWeight: FontWeight.w200,
-                ),
-              ),
-              onDetailsPressed: () {
-                Get.to(() => UserProfilePage(),
-                    transition: Transition.leftToRight,
-                    duration: Duration(milliseconds: 800));
-              },
-            ),
-          ),
-          Divider(
-            thickness: 3,
-            color: Colors.white,
-          ),
+          // DrawerHeader(
+          //   child: UserAccountsDrawerHeader(
+          //     decoration: BoxDecoration(
+          //       color: primaryColor,
+          //     ),
+          //     currentAccountPicture: IconButton(
+          //       onPressed: (() {
+          //         Get.to(() => UserProfilePage(),
+          //             transition: Transition.rightToLeft,
+          //             duration: Duration(milliseconds: 800));
+          //       }),
+          //       icon: Image.asset(
+          //         'images/profile.png',
+          //         fit: BoxFit.cover,
+          //       ),
+          //     ),
+          //     accountName: Text(
+          //       'Leo Messi',
+          //       style: TextStyle(
+          //         fontSize: 15,
+          //         fontWeight: FontWeight.bold,
+          //       ),
+          //     ),
+          //     accountEmail: Text(
+          //       'leo2022messi@gmail.com',
+          //       style: TextStyle(
+          //         fontWeight: FontWeight.w200,
+          //       ),
+          //     ),
+          //     // onDetailsPressed: () {
+          //     //   Get.to(() => UserProfilePage(),
+          //     //       transition: Transition.leftToRight,
+          //     //       duration: Duration(milliseconds: 800));
+          //     // },
+          //   ),
+          // ),
+          // Divider(
+          //   thickness: 3,
+          //   color: Colors.white,
+          // ),
           // SizedBox(
           //   height: 0,
           // ),
-          Column(
-            children: [
-              DrawerListTileMenu(
-                  Icons.person, 'Ebook', EBookPage(), _scaffoldKey),
-              Divide(),
-              DrawerListTileMenu(
-                  Icons.import_export, 'Referals', ReferPage(), _scaffoldKey),
-              // direction of icon
-              Divide(),
-              DrawerListTileMenu(Icons.info, 'About Developers',
-                  AboutDeveloperPage(), _scaffoldKey),
-              Divide(),
-              DrawerListTileMenu(Icons.help, 'Help', HelpPage(), _scaffoldKey),
-              Divide(),
-              DrawerListTileMenu(
-                  Icons.logout, 'Logout', SplashScreenPage(), _scaffoldKey),
 
-              Divide(),
-            ],
+          Spacer(
+            flex: 1,
           ),
+          DrawerListTileMenu(Icons.person, 'Ebook', EBookPage(), _scaffoldKey),
+          // Divide(),
+          DrawerListTileMenu(
+              Icons.sync_alt, 'Referals', ReferPage(), _scaffoldKey),
+          // direction of icon
+          // Divide(),
+          DrawerListTileMenu(Icons.info, 'About Developers',
+              AboutDeveloperPage(), _scaffoldKey),
+          // Divide(),
+          DrawerListTileMenu(Icons.help, 'Help', HelpPage(), _scaffoldKey),
+          // Divide(),
+          DrawerListTileMenu(
+              Icons.logout, 'Logout', SplashScreenPage(), _scaffoldKey),
+          Spacer(
+            flex: 3,
+          ),
+          Text(
+            "v 1.0.2",
+            style: TextStyle(
+              color: Colors.white,
+            ),
+          ),
+
+          // Divide(),
         ],
       ),
     );

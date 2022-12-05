@@ -2,33 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:safal/view/homepage.dart';
-import 'package:safal/view/registerPage.dart';
 
 import '../const.dart';
+import 'auth/registerPage.dart';
 
-class SplashScreenPage extends StatefulWidget {
+class SplashScreenPage extends StatelessWidget {
   const SplashScreenPage({Key? key}) : super(key: key);
 
-  @override
-  _SplashScreenPageState createState() => _SplashScreenPageState();
-}
-
-class _SplashScreenPageState extends State<SplashScreenPage> {
-  checkAuth() {
-    Future.delayed(Duration(seconds: 5), () {
+  void checkAuth() {
+    Future.delayed(Duration(seconds: 1), () {
       Get.off(() => RegisterPage());
     });
   }
 
   @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    checkAuth();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    checkAuth();
     return Scaffold(
       // backgroundColor: Color(0xff05014A),
       appBar: AppBar(
@@ -39,7 +28,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
         actions: [
           TextButton(
             onPressed: () {
-              Get.off(() => HomePage());
+              Get.off(() => RegisterPage());
             },
             child: Text(
               'skip',

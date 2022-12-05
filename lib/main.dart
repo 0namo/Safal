@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:safal/const.dart';
-import 'package:safal/view/homepage.dart';
-import 'package:safal/view/loginPage.dart';
+import 'package:safal/view/profile/editprofilepage.dart';
 import 'package:safal/view/profile/profilepage.dart';
-import 'package:safal/view/registerPage.dart';
 import 'package:safal/view/splashPage.dart';
 
 void main() {

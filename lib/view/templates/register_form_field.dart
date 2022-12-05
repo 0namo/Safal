@@ -57,7 +57,11 @@ class LogoForm extends StatelessWidget {
 //form bottom
 class FormBtn extends StatelessWidget {
   final String btntext;
-  FormBtn(this.btntext);
+  final Function onPressed;
+  FormBtn(
+    this.btntext, {
+    required this.onPressed,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -89,14 +93,7 @@ class FormBtn extends StatelessWidget {
           backgroundColor: Colors.transparent,
           elevation: 0,
         ),
-        onPressed: () {
-          // register code
-          Get.off(
-            () => HomePage(),
-            transition: Transition.fadeIn,
-            duration: Duration(seconds: 3),
-          );
-        },
+        onPressed: () => onPressed(),
         child: Text(
           btntext,
           style: TextStyle(fontSize: 15, letterSpacing: 1),
