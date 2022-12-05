@@ -126,9 +126,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
                             activeColor: Colors.green,
                             onChanged: (value) {
                               isSeected = value;
-                              setState(() {
-                                
-                              });
+                              setState(() {});
                             },
                           ),
                         ),

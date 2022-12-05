@@ -32,7 +32,7 @@ class DrawerWidget extends StatelessWidget {
             padding: EdgeInsets.only(
               top: 0,
               left: 20,
-              right: 210,
+              right: 20,
             ),
             child: Row(
               children: [
