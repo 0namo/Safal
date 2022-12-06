@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:safal/const.dart';
+import 'package:safal/view/category.dart';
+import 'package:safal/view/homepage.dart';
 import 'package:safal/view/profile/editprofilepage.dart';
 import 'package:safal/view/profile/profilepage.dart';
+import 'package:safal/view/profile/referals.dart';
+import 'package:safal/view/profile/subscription.dart';
 import 'package:safal/view/splashPage.dart';
 
 void main() {
@@ -32,7 +36,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: EditProfilePage(),
+      home: CategoryPage(),
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:safal/view/category.dart';
 
 import '../../../const.dart';
 import '../templates/coursetemplate.dart';
@@ -80,7 +81,11 @@ class HomeView extends StatelessWidget {
                               borderRadius: BorderRadius.circular(10),
                             ),
                             child: GestureDetector(
-                                onTap: (() {}),
+                                onTap: (() {
+                                  Get.to(
+                                    () => CategoryPage(),
+                                  );
+                                }),
                                 child: Icon(
                                   Icons.tune,
                                   color: secondarycolor,

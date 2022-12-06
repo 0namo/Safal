@@ -17,6 +17,7 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Text('REGISTER'),
         centerTitle: true,
@@ -30,23 +31,26 @@ class _RegisterPageState extends State<RegisterPage> {
           SizedBox(
             height: 30,
           ),
-          infoText('Full Name'),
+          InfoText('Full Name'),
           RegisterFormField(Icons.person, '    Enter Full Name'),
           SizedBox(
             height: 20,
           ),
-          infoText('Email'),
-          RegisterFormField(Icons.email, '    Enter Email'),
+          InfoText('Email'),
+          RegisterFormField(Icons.email, '    Enter Email',
+              keyboardInputType: TextInputType.emailAddress),
           SizedBox(
             height: 20,
           ),
-          infoText('Phone Number'),
-          RegisterFormField(Icons.phone, '    Enter Phone Number'),
+          InfoText('Phone Number'),
+          RegisterFormField(Icons.phone, '    Enter Phone Number',
+              keyboardInputType: TextInputType.phone),
           SizedBox(
             height: 20,
           ),
-          infoText('Password'),
-          RegisterFormField(Icons.vpn_key, '    Enter Password'),
+          InfoText('Password'),
+          RegisterFormField(Icons.vpn_key, '    Enter Password',
+              keyboardInputType: TextInputType.visiblePassword),
           SizedBox(
             height: 20,
           ),
@@ -116,19 +120,6 @@ class _RegisterPageState extends State<RegisterPage> {
             ),
           ),
         ],
-      ),
-    );
-  }
-
-  Padding infoText(String info) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 45),
-      child: Text(
-        '$info',
-        style: TextStyle(
-          fontSize: 15,
-          color: primaryColor,
-        ),
       ),
     );
   }

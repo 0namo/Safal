@@ -10,12 +10,14 @@ import '../homepage.dart';
 class RegisterFormField extends StatelessWidget {
   final IconData icon;
   final String hinttxt;
-  RegisterFormField(this.icon, this.hinttxt);
+  final TextInputType? keyboardInputType ;
+  RegisterFormField(this.icon, this.hinttxt, {this.keyboardInputType});
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(left: 40, right: 40, top: 0),
       child: TextField(
+        keyboardType: keyboardInputType,
         cursorColor: Color(0xff003277),
         decoration: InputDecoration(
           // contentPadding: EdgeInsets.zero,
@@ -167,6 +169,27 @@ class GoogleSignIn extends StatelessWidget {
             color: Colors.black,
             fontWeight: FontWeight.bold,
           ),
+        ),
+      ),
+    );
+  }
+}
+
+//register text
+
+class InfoText extends StatelessWidget {
+  final String infotxt;
+
+  InfoText(this.infotxt);
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 45),
+      child: Text(
+        infotxt,
+        style: TextStyle(
+          fontSize: 15,
+          color: primaryColor,
         ),
       ),
     );
