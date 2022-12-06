@@ -97,13 +97,13 @@ class _UserProfilePageState extends State<UserProfilePage> {
                   // ),
                   ProfileWidget(Icons.edit, 'Edit Profile', EditProfilePage(),
                       Icons.keyboard_arrow_right_sharp),
-                  Divide(),
+                  DIVIDER,
                   ProfileWidget(Icons.trending_up, 'My Subscription',
-                      MySubscription(), Icons.keyboard_arrow_right_sharp),
-                  Divide(),
-                  ProfileWidget(Icons.sync_alt, 'Referals', MyReferals(),
+                      SubscriptionPage(), Icons.keyboard_arrow_right_sharp),
+                  DIVIDER,
+                  ProfileWidget(Icons.sync_alt, 'Referals', ReferalsPage(),
                       Icons.keyboard_arrow_right_sharp),
-                  Divide(),
+                  DIVIDER,
                   GestureDetector(
                     onTap: () {
                       // Get.to(() => HomePage(),
@@ -133,19 +133,15 @@ class _UserProfilePageState extends State<UserProfilePage> {
                       ],
                     ),
                   ),
-                  Divide(),
+                  DIVIDER,
                   GestureDetector(
                     onTap: () {
-                      //   Get.to(() => HomePage(),
-                      //       transition: Transition.rightToLeft,
-                      //       duration: Duration(milliseconds: 800));
                       Get.defaultDialog(
                         confirm: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.red),
                           child: Text(
                             'Confirm',
-                            // style: TextStyle(color: Colors.green),
                           ),
                           onPressed: () {
                             Get.offAll(() => LoginPage());
@@ -156,7 +152,6 @@ class _UserProfilePageState extends State<UserProfilePage> {
                               backgroundColor: Colors.green),
                           child: Text(
                             'Cancel',
-                            // style: TextStyle(color: Colors.red),
                           ),
                           onPressed: () {
                             Get.back();
@@ -164,8 +159,6 @@ class _UserProfilePageState extends State<UserProfilePage> {
                         ),
                         title: 'Do you want to Logout ?',
                         middleText: '',
-                        confirmTextColor: Colors.amber,
-                        cancelTextColor: Colors.red,
                       );
                     },
                     child: Wrap(

@@ -22,6 +22,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
 //     // services.initilization();
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Text('LOGIN'),
         centerTitle: true,
@@ -35,13 +36,15 @@ class _LoginPageState extends State<LoginPage> {
           SizedBox(
             height: 50,
           ),
-          infoText('Email'),
-          RegisterFormField(Icons.email, '    Enter Email'),
+          InfoText('Email'),
+          RegisterFormField(Icons.email, '    Enter Email',
+              keyboardInputType: TextInputType.emailAddress),
           SizedBox(
             height: 20,
           ),
-          infoText('Password'),
-          RegisterFormField(Icons.vpn_key, '    Enter Password'),
+          InfoText('Password'),
+          RegisterFormField(Icons.vpn_key, '    Enter Password',
+              keyboardInputType: TextInputType.visiblePassword),
           SizedBox(
             height: 20,
           ),
@@ -124,19 +127,6 @@ class _LoginPageState extends State<LoginPage> {
             ),
           ),
         ],
-      ),
-    );
-  }
-
-  Padding infoText(String info) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 45),
-      child: Text(
-        '$info',
-        style: TextStyle(
-          fontSize: 15,
-          color: primaryColor,
-        ),
       ),
     );
   }

@@ -1,7 +1,9 @@
 import 'package:get/get.dart';
+import 'package:safal/view/profile/referals.dart';
 import 'package:safal/view/splashPage.dart';
 
 import '../../const.dart';
+import '../auth/loginpage.dart';
 import '../drawer_menu/DrawerMenuTemplate.dart';
 import 'package:flutter/material.dart';
 
@@ -110,18 +112,52 @@ class DrawerWidget extends StatelessWidget {
             flex: 1,
           ),
           DrawerListTileMenu(Icons.person, 'Ebook', EBookPage(), _scaffoldKey),
-          // Divide(),
+
           DrawerListTileMenu(
-              Icons.sync_alt, 'Referals', ReferPage(), _scaffoldKey),
-          // direction of icon
-          // Divide(),
+              Icons.sync_alt, 'Referals', ReferalsPage(), _scaffoldKey),
+
           DrawerListTileMenu(Icons.info, 'About Developers',
               AboutDeveloperPage(), _scaffoldKey),
-          // Divide(),
+
           DrawerListTileMenu(Icons.help, 'Help', HelpPage(), _scaffoldKey),
-          // Divide(),
-          DrawerListTileMenu(
-              Icons.logout, 'Logout', SplashScreenPage(), _scaffoldKey),
+          Padding(
+            padding: const EdgeInsets.only(left: 20, right: 20),
+            child: ListTile(
+              horizontalTitleGap: 20,
+              leading: Icon(Icons.logout, color: Colors.white),
+              title: Text(
+                'Logout',
+                style: TextStyle(color: Colors.white),
+              ),
+              onTap: () {
+                Get.defaultDialog(
+                  confirm: ElevatedButton(
+                    style:
+                        ElevatedButton.styleFrom(backgroundColor: Colors.red),
+                    child: Text(
+                      'Confirm',
+                    ),
+                    onPressed: () {
+                      Get.offAll(() => LoginPage());
+                    },
+                  ),
+                  cancel: ElevatedButton(
+                    style:
+                        ElevatedButton.styleFrom(backgroundColor: Colors.green),
+                    child: Text(
+                      'Cancel',
+                    ),
+                    onPressed: () {
+                      Get.back();
+                    },
+                  ),
+                  title: 'Do you want to Logout ?',
+                  middleText: '',
+                );
+              },
+            ),
+          ),
+
           Spacer(
             flex: 3,
           ),

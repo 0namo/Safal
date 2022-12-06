@@ -16,7 +16,7 @@ class _AboutDeveloperPageState extends State<AboutDeveloperPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('E-About Developer'),
+        title: Text('About Developer'),
         centerTitle: true,
         backgroundColor: primaryColor,
         elevation: 0,

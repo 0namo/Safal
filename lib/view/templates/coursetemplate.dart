@@ -62,6 +62,7 @@ class CourseTemplate extends StatelessWidget {
                     ),
                   ],
                 ),
+               
                 SizedBox(
                   height: 8,
                 ),
